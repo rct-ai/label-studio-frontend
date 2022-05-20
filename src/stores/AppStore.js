@@ -9,6 +9,7 @@ import Utils from "../utils";
 import messages from "../utils/messages";
 import { guidGenerator } from "../utils/unique";
 import { delay, isDefined } from "../utils/utilities";
+import { confirm } from "../common/Modal/Modal";
 import AnnotationStore from "./Annotation/store";
 import Project from "./ProjectStore";
 import Settings from "./SettingsStore";
@@ -345,6 +346,18 @@ export default types
         const annotation = self.annotationStore.selected;
 
         annotation.redo();
+      });
+      
+      hotkeys.addNamed("annotation:delete", function() {
+        const annotation = self.annotationStore.selected;
+
+        confirm({
+          title: "Delete annotation",
+          body: "This action cannot be undone",
+          buttonLook: "destructive",
+          okText: "Proceed",
+          onOk: () => annotation.list.deleteAnnotation(annotation),
+        });
       });
 
       hotkeys.addNamed("region:exit", () => {

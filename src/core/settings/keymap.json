@@ -55,6 +55,10 @@
     "mac": "command+shift+z",
     "description": "Redo"
   },
+  "annotation:delete": {
+    "key": "ctrl+backspace",
+    "description": "Delete"
+  },
   "region:delete-all": {
     "key": "ctrl+backspace",
     "mac": "command+backspace",

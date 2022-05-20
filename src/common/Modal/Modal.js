@@ -52,7 +52,6 @@ export const confirm = ({ okText, onOk, cancelText, onCancel, buttonLook, ...pro
             modal.close();
           }}
           size="compact"
-          autoFocus
         >
           {cancelText ?? "Cancel"}
         </Button>
@@ -64,6 +63,7 @@ export const confirm = ({ okText, onOk, cancelText, onCancel, buttonLook, ...pro
           }}
           size="compact"
           look={buttonLook ?? "primary"}
+          autoFocus
         >
           {okText ?? "OK"}
         </Button>

@@ -155,7 +155,7 @@ export const Controls = controlsInjector(observer(({ store, history, annotation 
     if ((userGenerate && sentUserGenerate) || (!userGenerate && store.hasInterface("update"))) {
       const isUpdate = sentUserGenerate || versions.result;
       const isRejected = store.task.queue?.includes("Rejected queue");
-      const withComments = isFF(FF_DEV_2186) || store.hasInterface("comments:update");
+      const withComments = false; // isFF(FF_DEV_2186) || store.hasInterface("comments:update");
       let button;
       
       if (withComments && isUpdate) {

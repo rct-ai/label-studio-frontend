@@ -464,6 +464,12 @@ export default types
       const entity = self.annotationStore.selected;
       const event = entity.exists ? 'updateAnnotation' : 'submitAnnotation';
 
+      if (entity.results.length === 0) {
+        handleSubmittingFlag(async () => {
+          await getEnv(self).events.invoke(event, self, entity);
+        });
+        return;
+      }
       entity.beforeSend();
 
       if (!entity.validate()) return;
@@ -479,6 +485,13 @@ export default types
       if (self.isSubmitting) return;
 
       const entity = self.annotationStore.selected;
+
+      if (entity.results.length === 0) {
+        handleSubmittingFlag(async () => {
+          await getEnv(self).events.invoke('updateAnnotation', self, entity, extraData);
+        });
+        return;
+      }
 
       entity.beforeSend();
 
